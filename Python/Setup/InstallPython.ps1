@@ -1,0 +1,1 @@
+winget install Python.Python.3.12 --accept-source-agreements --accept-package-agreements
