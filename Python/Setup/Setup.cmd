@@ -28,3 +28,5 @@ ECHO upgrade xlrd
 python -m pip install xlrd -U
 ECHO upgrade tqdm
 python -m pip install tqdm -U
+ECHO upgrade openpyxl
+python -m pip install openpyxl -U
