@@ -92,8 +92,6 @@ Section "OutPut" SEC05
 SectionEnd
 
 Section "Python" SEC06
-  SetOutPath "$INSTDIR\Python\Development"
-  File "..\..\..\..\Git\ZPW-Stage-Planning\Python\Development\*.ipynb"
   SetOutPath "$INSTDIR\Python\Setup"
   File "..\..\..\..\Git\ZPW-Stage-Planning\Python\Setup\*.py"
   File "..\..\..\..\Git\ZPW-Stage-Planning\Python\Setup\*.nsi"
