@@ -25,9 +25,9 @@ def GetMaandenSet(Year):
     return MaandenSet
 
 def GetMaanden(DataSet,MaandenSet):
-    #Maanden = pd.to_numeric(DataSet['Maand'], downcast='integer',errors='ignore').unique()
-    Maanden = pd.to_numeric(DataSet['Maand'], downcast='integer', errors='coerce')
-    Maanden = Maanden.dropna().unique()
+    Maanden = pd.to_numeric(DataSet['Maand'], downcast='integer',errors='ignore').unique()
+    #Maanden = pd.to_numeric(DataSet['Maand'], downcast='integer', errors='coerce')
+    #Maanden = Maanden.dropna().unique()
     Maanden = pd.DataFrame({'MaandID': Maanden[:,]})
     Maanden = pd.merge(Maanden, MaandenSet,how='left', on='MaandID')
     Maanden.set_index('ProcessID', inplace=True)

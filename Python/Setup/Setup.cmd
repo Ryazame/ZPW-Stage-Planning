@@ -8,6 +8,8 @@ ECHO Installing xlsxwriter
 python -m pip install xlsxwriter
 ECHO Installing numpy
 python -m pip install numpy
+ECHO upgrade pyarrow
+python -m pip install pyarrow -U
 ECHO Installing pandas
 python -m pip install pandas
 ECHO Installing python-dateutil
