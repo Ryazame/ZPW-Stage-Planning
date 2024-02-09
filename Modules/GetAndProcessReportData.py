@@ -1,3 +1,6 @@
+import sys
+sys.path.append(r'C:\\ZPW\\Stage\\Modules')
+
 from DBProcessor import DebugLogger as l
 from YearProcessor import Prep2023
 from DBProcessor import WriteDFToDB
