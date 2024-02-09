@@ -8,7 +8,8 @@ def ExcelMarkup(output,Maand_Jaar,writer,SheetName):
         log.debug('|------->   Geen rijen voor: '+Maand_Jaar)
     else:
         log.debug('|------->   We verwerken nu data voor: '+Maand_Jaar)
-        output.to_excel(writer,'%s' % SheetName)
+        #output.to_excel(writer,'%s' % SheetName)
+        output.to_excel(excel_writer=writer, sheet_name=SheetName)
         process = 1
         if process == 1:
             ######################################

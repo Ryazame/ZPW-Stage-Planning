@@ -25,7 +25,9 @@ def GetMaandenSet(Year):
     return MaandenSet
 
 def GetMaanden(DataSet,MaandenSet):
-    Maanden = pd.to_numeric(DataSet['Maand'], downcast='integer',errors='ignore').unique()
+    #Maanden = pd.to_numeric(DataSet['Maand'], downcast='integer',errors='ignore').unique()
+    Maanden = pd.to_numeric(DataSet['Maand'], downcast='integer', errors='coerce')
+    Maanden = Maanden.dropna().unique()
     Maanden = pd.DataFrame({'MaandID': Maanden[:,]})
     Maanden = pd.merge(Maanden, MaandenSet,how='left', on='MaandID')
     Maanden.set_index('ProcessID', inplace=True)
@@ -95,7 +97,8 @@ def ProcessScholen(ScholenList,DataSet,xls_scholen_Path,Maanden):
     for school in tqdm(ScholenList, colour="YELLOW", desc="Loading scholen..."):
         #SchoolIndex = school['School']
         SchoolData = DataSet.loc[DataSet['School'] == school]
-        SchoolData = SchoolData.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+        #SchoolData = SchoolData.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+        SchoolData = SchoolData.apply(lambda x: x.strip() if isinstance(x, str) else x)
         School = school.strip()
         School = School.replace('-','_').replace(' ','_').replace('_bachelor','').replace('_brugopleiding','').replace('Hogeschool_Gent','HOGent').replace('HO_Gent','HOGent').replace('(in_het_kader_van_TWE)','').replace('Artevelde_HOGent','Artevelde').replace('__','_') 
             
