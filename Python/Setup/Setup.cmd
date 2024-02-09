@@ -1,4 +1,4 @@
-SET PythonPath=C:\ZPW\Python\zpw
+SET PythonPath=C:\ZPW\Stage\Python\RunTime\python-3.12
 SET PATH=%PATH%;%PythonPath%;%PythonPath%\Scripts;%PythonPath%\Lib
 ECHO OFF
 CD %PythonPath%
