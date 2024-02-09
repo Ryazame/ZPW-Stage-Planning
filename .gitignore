@@ -165,3 +165,9 @@ cython_debug/
 *.sqlite
 *.xlsx
 *.7z
+/Python/RunTime/python-3.12/Lib
+/Python/RunTime/python-3.12/Scripts
+/Python/RunTime/python-3.12/*.DLL
+/Python/RunTime/python-3.12/*.cat
+/Python/RunTime/python-3.12/*.exe
+/Python/RunTime/python-3.12/*.zip
