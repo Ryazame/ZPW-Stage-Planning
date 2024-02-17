@@ -5,30 +5,18 @@ CD %PythonPath%
 ECHO Upgrading Pip:  
 python -m pip install -U pip
 ECHO Installing xlsxwriter
-python -m pip install xlsxwriter
+python -m pip install xlsxwriter==3.1.9
 ECHO Installing numpy
-python -m pip install numpy
+python -m pip install numpy==1.26.4
 ECHO upgrade pyarrow
-python -m pip install pyarrow -U
+python -m pip install pyarrow==15.0.0
 ECHO Installing pandas
-python -m pip install pandas
+python -m pip install pandas==2.2.0
 ECHO Installing python-dateutil
-python -m pip install python-dateutil
+python -m pip install python-dateutil==2.8.2
 ECHO Installing xlrd
-python -m pip install xlrd
+python -m pip install xlrd==2.0.1
 ECHO Installing tqdm
-python -m pip install tqdm
-ECHO Updating
-python -m pip install xlsxwriter -U
-ECHO upgrade numpy
-python -m pip install numpy -U
-ECHO upgrade pandas
-python -m pip install pandas -U
-ECHO upgrade python-dateutil
-python -m pip install python-dateutil -U
-ECHO upgrade xlrd
-python -m pip install xlrd -U
-ECHO upgrade tqdm
-python -m pip install tqdm -U
+python -m pip install tqdm==4.66.1
 ECHO upgrade openpyxl
-python -m pip install openpyxl -U
+python -m pip install openpyxl==1.1.0

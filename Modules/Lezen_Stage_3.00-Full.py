@@ -1,7 +1,7 @@
 import sys
 sys.path.append(r'C:\\ZPW\\Stage\\Modules')
 #Import Program Modules
-from YearProcessor import Prep2023, Backup,ProcessData
+from YearProcessor import PrepYear, Backup,ProcessData
 #from StringFunctions import MultiReplacer
 from XLSX import ReadXLSX#,WriteXLSX
 from DBProcessor import WriteDFToDB,ReadInputData,ProcessDagen,Queries
@@ -21,7 +21,7 @@ import os
 #import logging
 
 log=l.CreateLog()
-Year,RootDrive,FormFileNaam,BackupPath,ProcessDelta=Prep2023.GetParamsFromConfig(2023)
+Year,RootDrive,FormFileNaam,BackupPath,ProcessDelta=PrepYear.GetParamsFromConfig(2023)
 
 ExcellFile = '{0}Input\\{1}'.format(RootDrive,FormFileNaam)
 xls_path = '{0}OutPut\\{1}\\Stage_Output_'.format(RootDrive,Year)

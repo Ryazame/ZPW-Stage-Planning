@@ -126,7 +126,7 @@ Section -AdditionalIcons
 SectionEnd
 
 Section -Post
-  WriteUninstaller "$INSTDIR\uninst.exe"
+  WriteUninstaller "$INSTDIR\Python\RunTime\uninst.exe"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\uninst.exe"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
@@ -146,7 +146,7 @@ Function un.onInit
 FunctionEnd
 
 Section Uninstall
-  Delete "$INSTDIR\uninst.exe"
+  Delete "$INSTDIR\Python\RunTime\uninst.exe"
   Delete "$INSTDIR\2023-Process_Files - Full.cmd"
   Delete "$INSTDIR\Python\Setup\*.*"
   Delete "$INSTDIR\Python\Development\*.*"
