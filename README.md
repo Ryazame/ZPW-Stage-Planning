@@ -1,7 +1,7 @@
 <h2>Compiling</h2>
 
 
-This program is written to assist the ZPW Planning department in handling the reauests for interns.
+This program is written to assist the ZPW Planning department in handling the requests for interns.
 How to/
 
 First download Python Embedded 3.12 from https://www.python.org/downloads/windows/
