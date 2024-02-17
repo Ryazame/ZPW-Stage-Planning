@@ -1,6 +1,9 @@
 import pandas as pd
 import time, datetime
 import logging
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 from DBProcessor import DebugLogger as l
 log=l.CreateLog()
 #log.setLevel(logging.DEBUG)
@@ -71,7 +74,14 @@ def CreateMonthResult(Year,D_Dag):
             DatumResultaat['Maand']=Maand
             DatumResultaat['Jaar']=Jaar
             DatumResultaat['ID']=DatumResultaat.index
-            MaandResultaat = pd.concat([MaandResultaat,DatumResultaat]).fillna(0)
+            #MaandResultaat = pd.concat([MaandResultaat,DatumResultaat]).fillna(0)
+            if not MaandResultaat.empty and not DatumResultaat.empty:
+                MaandResultaat = pd.concat([MaandResultaat, DatumResultaat], axis=0)
+            else:
+                MaandResultaat = pd.DataFrame()
+            # Fill any remaining NaN values with 0
+            MaandResultaat.fillna(0, inplace=True)
+            #MaandResultaat=MaandResultaat.infer_objects(copy=False).fillna(0, inplace=True)
     MaandResultaat=MaandResultaat.apply(pd.to_numeric)
     log.debug('|--> Dataframe genormaliseerd')
     return MaandResultaat

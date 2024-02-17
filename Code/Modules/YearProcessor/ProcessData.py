@@ -23,11 +23,17 @@ def GetMaandenSet(Year):
                                             'mei '+str(int(Year)+1),'juni '+str(int(Year)+1)]})
     #MaandenSet = MaandenSet.apply(pd.to_numeric, downcast='integer', errors='ignore')
     return MaandenSet
-
+def convert_to_numeric(element):
+    if element.isdigit():
+        return int(element)
+    else:
+        return element
 def GetMaanden(DataSet,MaandenSet):
-    Maanden = pd.to_numeric(DataSet['Maand'], downcast='integer',errors='ignore').unique()
-    #Maanden = pd.to_numeric(DataSet['Maand'], downcast='integer', errors='coerce')
-    #Maanden = Maanden.dropna().unique()
+    #Maanden = pd.to_numeric(DataSet['Maand'], downcast='integer',errors='ignore').unique()
+    
+    Maanden = DataSet.map(lambda x: int(x) if str(x).isdigit() else x)
+    Maanden = pd.to_numeric(DataSet['Maand'], downcast='integer', errors='coerce')
+    Maanden = Maanden.dropna().unique()
     Maanden = pd.DataFrame({'MaandID': Maanden[:,]})
     Maanden = pd.merge(Maanden, MaandenSet,how='left', on='MaandID')
     Maanden.set_index('ProcessID', inplace=True)
@@ -118,7 +124,8 @@ def ProcessScholen(ScholenList,DataSet,xls_scholen_Path,Maanden):
             for contact in Email_aanvrager:
                 log.debug('|---->   We creëren een rapport voor : "'+contact+'"')
                 contactnaam = contact.strip().replace(' ', '_').replace('.', '_').replace('@', '_at_').replace('-', '_')
-                contactnaam = re.sub('[^\w\-_\. ]', '_', contactnaam).replace('_at_', '@').strip()
+                #contactnaam = re.sub('[^\w\-_\. ]', '_', contactnaam).replace('_at_', '@').strip()
+                contactnaam = re.sub(r'[^\w\-_\. ]', '_', contactnaam).replace('_at_', '@').strip()
                 if not os.path.exists(School_Path):
                     os.makedirs(School_Path)
                     log.debug('|---> Created Folder: '+School_Path)

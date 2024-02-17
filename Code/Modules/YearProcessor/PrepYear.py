@@ -1,6 +1,6 @@
 import configparser
 def GetParamsFromConfig(Year):
-    FilePath="""C:\\ZPW\\Stage\\Modules\\config\\{}.ini""".format(Year)
+    FilePath="""C:\\ZPW\\Stage\\Code\\Modules\\config\\{}.ini""".format(Year)
     config = configparser.ConfigParser()
     config.read(FilePath)
     year=config["GENERAL"]["year"]

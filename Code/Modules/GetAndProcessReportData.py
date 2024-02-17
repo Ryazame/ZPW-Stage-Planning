@@ -1,14 +1,25 @@
 import sys
-sys.path.append(r'C:\\ZPW\\Stage\\Code\\Modules')
+sys.path.append(r'C:\ZPW\Stage\Code\Modules')
 
 from DBProcessor import DebugLogger as l
-from YearProcessor import Prep2023
+from YearProcessor import PrepYear
 from DBProcessor import WriteDFToDB
 from tqdm import tqdm
+import datetime
 # In[1]:
 
 log=l.CreateLog()
-Year,RootDrive,FormFileNaam,BackupPath,ProcessDelta=Prep2023.GetParamsFromConfig(2023)
+Current_Year = datetime.date.today().year
+Current_Month = datetime.date.today().month
+log.info('________________________________________________________________________________________________')
+log.info('| * Running in year: {}'.format(Current_Year))
+log.info('| * Running in month: {}'.format(Current_Month))
+if Current_Month > 0 and Current_Month < 7:
+    Current_Year=int(Current_Year)-1
+else:
+    Current_Year=int(Current_Year)
+log.info('| * Schooljaar : {0}'.format(str(int(Current_Year))+' - '+str(int(Current_Year)+1)))
+Year,RootDrive,FormFileNaam,BackupPath,ProcessDelta=PrepYear.GetParamsFromConfig(Current_Year)
 log.debug('The python root is: '+RootDrive)
 
 
@@ -87,7 +98,7 @@ def Return_HourValues_From_String(line):
 
 
 def GetDGFilepath(RootDrive,Year):
-    DBFilePath = RootDrive+"Database\\Dataset_"+str(Year)+".sqlite"
+    DBFilePath = RootDrive+"Code\\Database\\Dataset_"+str(Year)+".sqlite"
     log.debug('________________________________________________________________________________________________')
     log.debug('|--- De gebruikte programma settings zijn:')
     log.debug('| * Database : '+DBFilePath)
